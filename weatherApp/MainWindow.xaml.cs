@@ -1,21 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Newtonsoft.Json;
 using System.Net;
+using System.Windows.Input;
 
 namespace weatherApp
 {
@@ -51,10 +40,10 @@ namespace weatherApp
 
                 // imagePhase. = "https://opeanweathermap.org/img/w/" + info.weather[0].icon + ".png";
 
-                imagePhase.Source = new BitmapImage(new Uri("https://opeanweathermap.org/img/w/" + info.weather[0].icon + ".png"));
+                imagePhase.Source = new BitmapImage(new Uri("https://openweathermap.org/img/w/" + info.weather[0].icon + ".png"));
                 labelTemperature.Content = info.main.temp + "°C";
                 labelFeltTemperature.Content = info.main.feels_like + "°C";
-                labelPressure.Content = info.main.pressure + "hPa";
+                labelPressure.Content = info.main.pressure + " hPa";
                 labelHumidity.Content = info.main.humidity + "%";
                 labelWindSpeed.Content = info.wind.speed + "m/s";
                 labelPhase.Content = info.weather[0].main;
@@ -63,6 +52,15 @@ namespace weatherApp
                 labelVisibility.Content = info.visibility + "m";
                 
             }
+        }
+
+        private void EnterPress(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                CallApi();
+            }
+            
         }
     }
 }
