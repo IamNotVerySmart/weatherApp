@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,16 +34,27 @@ namespace weatherApp
         {
             public long sunrise { get; set; }
             public long sunset { get; set; }
-            public string country { get; set; }
+            
         }
 
+        public class list
+        {
+            public main main { get; set; }
+            public List<weather> weather { get; set; }
+            public wind wind { get; set; }
+            public int visibility { get; set; }
+            public sys sys { get; set; }
+        }
+        public class city
+        {
+            public string name { get; set; }
+            public string country { get; set; }
+        }
         public class root
         {
-            public List<weather> weather { get; set; }
-            public main main { get; set; }
-            public wind wind { get; set; }
-            public sys sys { get; set; }
-            public int visibility { get; set; }
+            public string cod { get; set; }
+            public List<list> list { get; set; }
+            public city city { get; set; }
         }
     }
 }

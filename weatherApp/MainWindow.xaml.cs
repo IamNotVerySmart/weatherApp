@@ -5,6 +5,7 @@ using System.Windows.Media.Imaging;
 using Newtonsoft.Json;
 using System.Net;
 using System.Windows.Input;
+using System.Collections.Generic;
 
 namespace weatherApp
 {
@@ -21,7 +22,7 @@ namespace weatherApp
             InitializeComponent();
 
             //
-            //
+            //https://api.openweathermap.org/data/2.5/forecast?q=warsaw&appid=41cd5be74dd9087720d9927e1a751837&units=metric
             //
         }
 
@@ -32,25 +33,33 @@ namespace weatherApp
 
         void CallApi()
         {
-            using (WebClient web = new WebClient())
+            try
             {
-                string url = $"https://api.openweathermap.org/data/2.5/weather?q={CityNameBox.Text}&appid={ApiKey}&units=metric";
-                var json = web.DownloadString(url);
-                DisplayData.root info = JsonConvert.DeserializeObject<DisplayData.root>(json);
+                using (WebClient web = new WebClient())
+                {
+                    string url = $"https://api.openweathermap.org/data/2.5/forecast?q={CityNameBox.Text}&appid={ApiKey}&units=metric";
+                    var json = web.DownloadString(url);
+                    DisplayData.root info = JsonConvert.DeserializeObject<DisplayData.root>(json);
 
-                // imagePhase. = "https://opeanweathermap.org/img/w/" + info.weather[0].icon + ".png";
+                    // imagePhase. = "https://opeanweathermap.org/img/w/" + info.weather[0].icon + ".png";
 
-                imagePhase.Source = new BitmapImage(new Uri("https://openweathermap.org/img/w/" + info.weather[0].icon + ".png"));
-                labelTemperature.Content = info.main.temp + "°C";
-                labelFeltTemperature.Content = info.main.feels_like + "°C";
-                labelPressure.Content = info.main.pressure + " hPa";
-                labelHumidity.Content = info.main.humidity + "%";
-                labelWindSpeed.Content = info.wind.speed + "m/s";
-                labelPhase.Content = info.weather[0].main;
-                labelDescription.Content = info.weather[0].description;
-                labelCountry.Content = info.sys.country;
-                labelVisibility.Content = info.visibility + "m";
-                
+                    imagePhase.Source = new BitmapImage(new Uri("https://openweathermap.org/img/w/" + info.list[0].weather[0].icon + ".png"));
+                    labelTemperature.Content = info.list[0].main.temp + "°C";
+                    labelFeltTemperature.Content = info.list[0].main.feels_like + "°C";
+                    labelPressure.Content = info.list[0].main.pressure + " hPa";
+                    labelHumidity.Content = info.list[0].main.humidity + "%";
+                    labelWindSpeed.Content = info.list[0].wind.speed + "m/s";
+                    labelPhase.Content = info.list[0].weather[0].main;
+                    labelDescription.Content = info.list[0].weather[0].description;
+                    labelCountry.Content = info.city.country;
+                    labelCity.Content = info.city.name;
+                    labelVisibility.Content = info.list[0].visibility + "m";
+                    CityNameBox.Text = "";
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Invalid city name, try something that exist.");
             }
         }
 
@@ -60,7 +69,16 @@ namespace weatherApp
             {
                 CallApi();
             }
-            
+        }
+
+        private void btnPrevious(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnNext(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
