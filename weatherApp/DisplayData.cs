@@ -44,6 +44,7 @@ namespace weatherApp
             public wind wind { get; set; }
             public int visibility { get; set; }
             public sys sys { get; set; }
+            public DateTime dt_txt { get; set; }
         }
         public class city
         {

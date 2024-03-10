@@ -13,21 +13,20 @@
         <StackPanel Orientation="Horizontal" Margin="10">
             <TextBox x:Name="CityNameBox" KeyDown="EnterPress" TextWrapping="Wrap" Text="" FontSize="20" Width="259" Height="31"/>
             <Button x:Name="btnNameSearch" Content="Search" FontSize="20" Click="btnSearch" Width="63" Margin="10,0,0,0"/>
-            <Button x:Name="btnNamePrevious" Content="Previous day" FontSize="20" Click="btnPrevious" Width="Auto"/>
-            <Button x:Name="btnNameNext" Content="Next day" FontSize="20" Click="btnNext" Width="Auto"/>
         </StackPanel>
 
-        <GroupBox Name="MainGroupBox" Grid.Row="1" Header="Today's weather" FontSize="25">
+        <GroupBox Name="MainGroupBox" Grid.Row="1" FontSize="25">
             <Grid Margin="10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="36"/>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="36"/>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
+                    <Label Content="" FontSize="14"/>
                     <Label Content="Phase:" FontSize="18"/>
                     <Label Content="Country:" FontSize="18"/>
                     <Label Content="Temperature:" FontSize="18"/>
@@ -41,20 +40,38 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
-                    
-                    <Label x:Name="labelPhase" Content="N/A" FontSize="18"/>
-                    <Label x:Name="labelCountry" Content="N/A" FontSize="18"/>
-                    <Label x:Name="labelTemperature" Content="N/A" FontSize="18"/>
-                    <Label x:Name="labelFeltTemperature" Content="N/A" FontSize="18"/>
-                    <Label x:Name="labelPressure" Content="N/A" FontSize="18"/>
-                    <Label x:Name="labelHumidity" Content="N/A" FontSize="18"/>
-                    <Label x:Name="labelVisibility" Content="N/A" FontSize="18"/>
-                    <Label x:Name="labelWindSpeed" Content="N/A" FontSize="18"/>
-                    <Label x:Name="labelDescription" Content="N/A" FontSize="18"/>
-                    <Label x:Name="labelCity" Content="N/A" FontSize="18"/>
+                    <Label Name="date1" Content="Today" FontSize="14"/>
+                    <Label x:Name="labelPhase1" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelCountry1" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelTemperature1" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelFeltTemperature1" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelPressure1" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelHumidity1" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelVisibility1" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelWindSpeed1" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelDescription1" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelCity1" Content="N/A" FontSize="18"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2">
-                    <Image x:Name="imagePhase"/>
+                    <Label Content="" FontSize="14"/>
+                    <Image x:Name="imagePhase1"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3">
+                    <Label Name="date2" Content="Tommorow" FontSize="14"/>
+                    <Label x:Name="labelPhase2" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelCountry2" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelTemperature2" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelFeltTemperature2" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelPressure2" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelHumidity2" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelVisibility2" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelWindSpeed2" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelDescription2" Content="N/A" FontSize="18"/>
+                    <Label x:Name="labelCity2" Content="N/A" FontSize="18"/>
+                </StackPanel>
+                <StackPanel Grid.Column="4">
+                    <Label Content="" FontSize="14"/>
+                    <Image x:Name="imagePhase2"/>
                 </StackPanel>
             </Grid>
         </GroupBox>
